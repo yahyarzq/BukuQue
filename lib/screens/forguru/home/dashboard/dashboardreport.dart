@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
-class DaftarMurid extends StatelessWidget {
-  const DaftarMurid({
+class DashboardReport extends StatelessWidget {
+  const DashboardReport({
     Key key,
   }) : super(key: key);
 
@@ -35,7 +35,7 @@ class DaftarMurid extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  '''22 Mei 2021''',
+                  '''Report''',
                   overflow: TextOverflow.visible,
                   textAlign: TextAlign.left,
                   style: TextStyle(
@@ -54,11 +54,11 @@ class DaftarMurid extends StatelessWidget {
                 child: ListView.separated(
                     shrinkWrap: true,
                     itemBuilder: (context, index) => ListWidgetwithDetail(
-                          nama: '21 Mei 2021', nomer: '67567567', onTap: (){},
-                        ),
+                      title: '21 Mei 2021', onTap: (){},
+                    ),
                     separatorBuilder: (context, index) => Divider(
-                          height: 35,
-                        ),
+                      height: 35,
+                    ),
                     itemCount: 10)),
           ],
         ),
@@ -68,11 +68,10 @@ class DaftarMurid extends StatelessWidget {
 }
 
 class ListWidgetwithDetail extends StatelessWidget {
-  final String nama;
-  final String nomer;
+  final String title;
   final Function onTap;
 
-  ListWidgetwithDetail({Key key, @required this.nama, @required this.nomer, @required this.onTap}) : super(key: key);
+  ListWidgetwithDetail({Key key, @required this.title, @required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,21 +88,7 @@ class ListWidgetwithDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  '''$nomer''',
-                  overflow: TextOverflow.visible,
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    height: 1.171875,
-                    fontSize: 14.0,
-                    fontFamily: 'Open Sans',
-                    fontWeight: FontWeight.w400,
-                    color: Color.fromARGB(255, 0, 0, 0),
-
-                    /* letterSpacing: 0.0, */
-                  ),
-                ),
-                Text(
-                  '''$nama''',
+                  '''$title''',
                   overflow: TextOverflow.visible,
                   textAlign: TextAlign.left,
                   style: TextStyle(

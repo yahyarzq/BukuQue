@@ -1,5 +1,6 @@
 
 import 'package:bukuque/component/constants.dart';
+import 'package:bukuque/query/db_query.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -235,7 +236,15 @@ class _LoginForMurid extends State<LoginForMurid> {
                                 style:
                                 TextStyle(fontSize: 17, color: Colors.black45),
                               ),
-                              onPressed: () {
+                              onPressed: () async {
+                                textFieldUserController.addListener(() {
+                                  this._username =
+                                      textFieldUserController.text;
+                                });
+                                textFieldPassController.addListener(() {
+                                  this._password =
+                                      textFieldPassController.text;
+                                });
                                 setState(() {
                                   _showAlertDialog("Fitur Belum Ada");
                                 });

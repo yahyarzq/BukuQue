@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DashboardCard extends StatelessWidget {
@@ -16,110 +17,87 @@ class DashboardCard extends StatelessWidget {
     return Center(
       child: Container(
         width: 360.0,
-        height: 130.0,
+        height: 110.0,
         decoration: BoxDecoration(
           color: Colors.grey,
             borderRadius: BorderRadius.circular(5.0)),
-        child: Stack(
-            clipBehavior: Clip.none, fit: StackFit.expand,
-            alignment: Alignment.center,
-            children: [
-              Positioned(
-                left: 31.0,
-                top: 13.0,
-                right: null,
-                bottom: null,
-                width: 67.0,
-                height: 54.0,
-                child: Text(
-                  '''$totalnumber''',
-                  overflow: TextOverflow.visible,
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    height: 1.171875,
-                    fontSize: 36.0,
-                    fontFamily: 'Open Sans',
-                    fontWeight: FontWeight.w700,
-                    color: Color.fromARGB(255, 12, 12, 12),
-                    /* letterSpacing: 0.0, */
-                  ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              width: 200,
+              child: Container(
+                padding: EdgeInsets.only(left: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 20,),
+                    Text(
+                      '''$totalnumber''',
+                      overflow: TextOverflow.visible,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        height: 1.171875,
+                        fontSize: 36.0,
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.w700,
+                        color: Color.fromARGB(255, 12, 12, 12),
+                        /* letterSpacing: 0.0, */
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      '''$title''',
+                      overflow: TextOverflow.visible,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        height: 1.171875,
+                        fontSize: 18.0,
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        /* letterSpacing: 0.0, */
+                      ),
+                    )
+                  ],
                 ),
               ),
-              Positioned(
-                left: 211.0,
-                top: 30.0,
-                right: null,
-                bottom: null,
-                width: 86.0,
-                height: 34.0,
-                child: GestureDetector(
-                  onTap: onTap,
-                  child: Container(
-                    width: 86.0,
-                    height: 34.0,
-                    child: Stack(
-                        clipBehavior: Clip.none, fit: StackFit.expand,
+            ),
+            Container(
+              child: Container(
+                width: 160,
+                child: TextButton(
+                    onPressed: onTap,
+                    child: Container(
+                      height: 44,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          color: Color.fromARGB(255, 63, 155, 61)),
+                      child: Align(
                         alignment: Alignment.center,
-                        children: [
-                          Positioned(
-                            left: 0.0,
-                            top: 0.0,
-                            right: null,
-                            bottom: null,
-                            width: 86.0,
-                            height: 34.0,
-                            child: Container(
-                              width: 86.0,
-                              height: 34.0,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 55, 136, 53),
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  '''lihat''',
-                                  overflow: TextOverflow.visible,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    height: 1.171875,
-                                    fontSize: 18.0,
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromARGB(255, 255, 255, 255),
+                        child: Text(
+                          '''Detail''',
+                          overflow: TextOverflow.visible,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            height: 1.171875,
+                            fontSize: 18.0,
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.w400,
+                            color: Color.fromARGB(255, 255, 255, 255),
 
-                                    /* letterSpacing: 0.0, */
-                                  ),
-                                ),
-                              ),
-                            ),
+                            /* letterSpacing: 0.0, */
                           ),
-                        ]),
-                  ),
-                ),
+                        ),
+                      ),
+                    )),
               ),
-              Positioned(
-                left: 31.0,
-                top: 59.0,
-                right: null,
-                bottom: null,
-                width: 100.0,
-                //height: 30.0,
-                child: Text(
-                  '''$title''',
-                  overflow: TextOverflow.visible,
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    height: 1.171875,
-                    fontSize: 18.0,
-                    fontFamily: 'Open Sans',
-                    fontWeight: FontWeight.w400,
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    /* letterSpacing: 0.0, */
-                  ),
-                ),
-              )
-            ]),
+            )
+          ],
+        ),
       ),
     );
   }

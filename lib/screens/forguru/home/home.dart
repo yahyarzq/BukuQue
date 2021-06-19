@@ -1,18 +1,20 @@
 
 import 'package:bukuque/component/constants.dart';
+import 'package:bukuque/query/db_query.dart';
 import 'package:bukuque/screens/component/DashboardCard.dart';
-import 'package:bukuque/screens/forguru/home/aboutguru.dart';
-import 'package:bukuque/screens/forguru/home/daftarkelas.dart';
+
 import 'package:flutter/material.dart';
 
-import 'dashboardguru.dart';
+import 'about/aboutguru.dart';
+import 'dashboard/dashboardguru.dart';
+import 'list/daftarkelas.dart';
 
-class Home extends StatefulWidget{
+class HomeGuru extends StatefulWidget{
   @override
-  State<StatefulWidget> createState() => _Home();
+  State<StatefulWidget> createState() => _HomeGuru();
 }
 
-class _Home extends State<Home>{
+class _HomeGuru extends State<HomeGuru>{
   int _currentIndex = 0;
   final List<Widget> _children = [
     DashboardGuru(),
@@ -20,7 +22,12 @@ class _Home extends State<Home>{
     AboutGuru(nama: 'ANDI', nomer: "7343478", onPressed: (){},)
   ];
 
+  @override
+  void initState() {
 
+    // TODO: implement initState
+    super.initState();
+  }
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
