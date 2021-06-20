@@ -279,6 +279,7 @@ class _LoginForMurid  extends State<LoginForMurid> {
                       globals.student_id = fjpof.studentsId[0].id;
                       globals.student_name = fjpof.studentsId[0].name;
                       globals.student_class_id = fjpof.studentsId[0].studentClassId;
+                      globals.student_teacher_id = fjpof.studentsId[0].studentTeacherId;
                       Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (context) => HomeMurid()));
                     }else{

@@ -9,8 +9,8 @@ import 'package:bukuque/component/globals.dart' as globals;
 //
 //  teacherLoginFutureActivity
 //
-Future<TeacherLoginParserActivity> teacherLoginFutureActivity(
-    String username, String password) async {
+Future<TeacherLoginParserActivity> teacherLoginFutureActivity(String username,
+    String password) async {
   http.Response response = await http.post(
       Uri.parse('http://10.0.2.2:8000/api/teacher/login'),
       body: {"username": username, "password": password});
@@ -67,7 +67,7 @@ Future<TeacherClassListParserActivity> teacherClassListFutureActivity(
 //  TeacherClassListParserActivity
 //
 Future<TeacherClassStudentListParserActivity>
-    teacherClassStudentListFutureActivity(String tid, String cid) async {
+teacherClassStudentListFutureActivity(String tid, String cid) async {
   http.Response response = await http.post(
       Uri.parse('http://10.0.2.2:8000/api/teacher/teacherClassStudentList'),
       body: {"teacher_id": tid, "class_id": cid});
@@ -92,8 +92,8 @@ Future<TeacherClassStudentListParserActivity>
 //
 //  StudentsLoginParserActivity
 //
-Future<StudentsLoginParserActivity> studentsLoginFutureActivity(
-    String username, String password) async {
+Future<StudentsLoginParserActivity> studentsLoginFutureActivity(String username,
+    String password) async {
   http.Response response = await http.post(
       Uri.parse('http://10.0.2.2:8000/api/students/login'),
       body: {"username": username, "password": password});
@@ -113,7 +113,8 @@ Future<StudentsLoginParserActivity> studentsLoginFutureActivity(
 //
 //  StudentsDataFutureActivity
 //
-Future<StudentsDataParserActivity> studentsDataFutureActivity(String id,String cid) async {
+Future<StudentsDataParserActivity> studentsDataFutureActivity(String id,
+    String cid) async {
   http.Response response = await http.post(
       Uri.parse('http://10.0.2.2:8000/api/students/studentsData'),
       body: {"students_id": id, "class_id": cid});
@@ -121,6 +122,45 @@ Future<StudentsDataParserActivity> studentsDataFutureActivity(String id,String c
     print("testing http connection 2");
     print(json.decode(response.body));
     return StudentsDataParserActivity.fromJson(jsonDecode(response.body));
+  } else {
+    print("testing http connection2");
+    print(json.decode(response.body));
+    throw Exception('Failed To Load Data');
+  }
+}
+
+
+//
+//  studentsBooksSubmitFutureActivity
+//
+Future studentsBooksSubmitFutureActivity(
+    String students_id, String class_id, String is_nugas,String is_ngaji,String is_doabanguntidur,String is_doabelumtidur,
+    String book_content,String is_subuh,String is_dzuhur,String is_azhar,String is_maghrib,
+    String is_isya,String bookisreviewed,String Surah_id,String Students_id,String Students_Teacher_id, String Students_Class_id) async {
+  http.Response response = await http.post(
+      Uri.parse('http://10.0.2.2:8000/api/books/studentsBooksSubmit'),
+      body: {"students_id": students_id,
+        "class_id": class_id,
+        "is_nugas": is_nugas,
+        "is_ngaji": is_ngaji,
+        "is_doabanguntidur": is_doabanguntidur,
+        "is_doabelumtidur": is_doabelumtidur,
+        "book_content": book_content,
+        "is_subuh": is_subuh,
+        "is_dzuhur": is_dzuhur,
+        "is_azhar": is_azhar,
+        "is_maghrib": is_maghrib,
+        "is_isya": is_isya,
+        "bookisreviewed": bookisreviewed,
+        "Surah_id": Surah_id,
+        "Students_id": Students_id,
+        "Students_Teacher_id": Students_Teacher_id,
+        "Students_Class_id": Students_Class_id
+      });
+  if (response.statusCode == 201) {
+    print("testing http connection 2");
+    print(json.decode(response.body));
+    return jsonDecode(response.body);
   } else {
     print("testing http connection2");
     print(json.decode(response.body));

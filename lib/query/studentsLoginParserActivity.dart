@@ -37,21 +37,25 @@ class StudentsId {
     this.id,
     this.name,
     this.studentClassId,
+    this.studentTeacherId,
   });
 
   int id;
   String name;
   int studentClassId;
+  int studentTeacherId;
 
   factory StudentsId.fromJson(Map<String, dynamic> json) => StudentsId(
     id: json["id"] == null ? null : json["id"],
     name: json["name"] == null ? null : json["name"],
     studentClassId: json["student_class_id"] == null ? null : json["student_class_id"],
+    studentTeacherId: json["student_teacher_id"] == null ? null : json["student_teacher_id"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id == null ? null : id,
     "name": name == null ? null : name,
     "student_class_id": studentClassId == null ? null : studentClassId,
+    "student_teacher_id": studentTeacherId == null ? null : studentTeacherId,
   };
 }
