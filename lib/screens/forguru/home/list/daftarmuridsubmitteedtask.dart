@@ -45,6 +45,11 @@ class _DaftarMuridSubmittedtaskState extends State<DaftarMuridSubmittedtask> {
         appBar: AppBar(
           toolbarHeight: 70,
           centerTitle: false,
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
           title: Text(
             '''BukuQue''',
             overflow: TextOverflow.visible,

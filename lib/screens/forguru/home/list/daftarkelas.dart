@@ -52,7 +52,7 @@ class _DaftarKelasState extends State<DaftarKelas> {
                                 namakelas:
                                     data.data.data[index].className.toString(),
                                 onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
+                                  Navigator.push(context,MaterialPageRoute(
                                       builder: (context) =>
                                           DaftarMuridSubmittedtask(
                                             kelas: data

@@ -71,6 +71,9 @@ teacherClassStudentListFutureActivity(String tid, String cid) async {
   http.Response response = await http.post(
       Uri.parse('http://10.0.2.2:8000/api/teacher/teacherClassStudentList'),
       body: {"teacher_id": tid, "class_id": cid});
+  print("Print teacher id and class id");
+  print(tid);
+  print(cid);
   if (response.statusCode == 200) {
     print("testing http connection 3 4");
     print(json.decode(response.body));
@@ -119,7 +122,7 @@ Future<StudentsDataParserActivity> studentsDataFutureActivity(String id,
       Uri.parse('http://10.0.2.2:8000/api/students/studentsData'),
       body: {"students_id": id, "class_id": cid});
   if (response.statusCode == 200) {
-    print("testing http connection 2");
+    print("testing http connection request");
     print(json.decode(response.body));
     return StudentsDataParserActivity.fromJson(jsonDecode(response.body));
   } else {
@@ -134,13 +137,12 @@ Future<StudentsDataParserActivity> studentsDataFutureActivity(String id,
 //  studentsBooksSubmitFutureActivity
 //
 Future studentsBooksSubmitFutureActivity(
-    String students_id, String class_id, String is_nugas,String is_ngaji,String is_doabanguntidur,String is_doabelumtidur,
+     String is_nugas,String is_ngaji,String is_doabanguntidur,String is_doabelumtidur,
     String book_content,String is_subuh,String is_dzuhur,String is_azhar,String is_maghrib,
-    String is_isya,String bookisreviewed,String Surah_id,String Students_id,String Students_Teacher_id, String Students_Class_id) async {
+    String is_isya,String bookisreviewed,String Surah_id) async {
   http.Response response = await http.post(
       Uri.parse('http://10.0.2.2:8000/api/books/studentsBooksSubmit'),
-      body: {"students_id": students_id,
-        "class_id": class_id,
+      body: {
         "is_nugas": is_nugas,
         "is_ngaji": is_ngaji,
         "is_doabanguntidur": is_doabanguntidur,
@@ -153,16 +155,17 @@ Future studentsBooksSubmitFutureActivity(
         "is_isya": is_isya,
         "bookisreviewed": bookisreviewed,
         "Surah_id": Surah_id,
-        "Students_id": Students_id,
-        "Students_Teacher_id": Students_Teacher_id,
-        "Students_Class_id": Students_Class_id
+        "Students_id": globals.student_id.toString(),
+        "Students_Teacher_id": globals.student_teacher_id.toString(),
+        "Students_Class_id": globals.student_class_id.toString()
       });
+  print(json.decode(response.body));
   if (response.statusCode == 201) {
     print("testing http connection 2");
     print(json.decode(response.body));
     return jsonDecode(response.body);
   } else {
-    print("testing http connection2");
+    print("testing http connection");
     print(json.decode(response.body));
     throw Exception('Failed To Load Data');
   }
