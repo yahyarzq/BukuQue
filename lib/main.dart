@@ -1,6 +1,7 @@
 import 'package:bukuque/component/constants.dart';
-import 'package:bukuque/screens/forguru/home/dashboardguru.dart';
+import 'file:///C:/Users/PC/AndroidStudioProjects/bukuque/lib/screens/forguru/home/dashboard/dashboardguru.dart';
 import 'package:bukuque/screens/forguru/home/home.dart';
+import 'package:bukuque/screens/usertypescreen/userselect.dart';
 import 'package:flutter/material.dart';
 
 
@@ -24,10 +25,10 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primaryColor: kPrimaryColor,
+        //primaryColor: kPrimaryColor,
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: UserSelect(),
     );
   }
 }

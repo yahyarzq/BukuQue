@@ -1,14 +1,23 @@
 
 import 'package:bukuque/component/constants.dart';
+import 'package:bukuque/query/activityclass.dart';
+import 'package:bukuque/query/activityfuture.dart';
+import 'package:bukuque/query/db_query.dart';
+import 'package:bukuque/query/sharedpreferencesactivity.dart';
+import 'package:bukuque/query/studentsLoginParserActivity.dart';
+import 'package:bukuque/screens/forguru/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:bukuque/component/globals.dart' as globals;
+
+import '../home/home.dart';
 
 class LoginForMurid extends StatefulWidget {
   @override
   _LoginForMurid createState() => _LoginForMurid();
 }
 
-class _LoginForMurid extends State<LoginForMurid> {
+class _LoginForMurid  extends State<LoginForMurid> {
   final textFieldUserController = TextEditingController();
   final textFieldPassController = TextEditingController();
   bool _passwordVisible;
@@ -16,15 +25,17 @@ class _LoginForMurid extends State<LoginForMurid> {
   String _password;
   String errorTextUser;
   String errorTextPass;
+  Future<StudentsLoginParserActivity> _studentsLoginActivity;
 
   @override
   void initState() {
     super.initState();
     _passwordVisible = false;
+
   }
 
 
-  void _showAlertDialog(String message) async {
+  _showAlertDialog(String message) async {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -254,7 +265,26 @@ class _LoginForMurid extends State<LoginForMurid> {
                       minimumSize:
                       MaterialStateProperty.all<Size>(Size(100, 50))),
                   child: Text("Login"),
-                  onPressed: () {
+                  onPressed: () async {
+                    textFieldUserController.addListener(() {
+                      this._username =
+                          textFieldUserController.text;
+                    });
+                    textFieldPassController.addListener(() {
+                      this._password =
+                          textFieldPassController.text;
+                    });
+                    var fjpof  = await studentsLoginFutureActivity(_username,_password);
+                    if(fjpof.status){
+                      globals.student_id = fjpof.studentsId[0].id;
+                      globals.student_name = fjpof.studentsId[0].name;
+                      globals.student_class_id = fjpof.studentsId[0].studentClassId;
+                      globals.student_teacher_id = fjpof.studentsId[0].studentTeacherId;
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => HomeMurid()));
+                    }else{
+                      _showAlertDialog('Cek Username Dan Password Anda');
+                    }
                     setState(()  {
 
                     });

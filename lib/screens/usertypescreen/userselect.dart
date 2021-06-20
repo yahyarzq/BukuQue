@@ -4,7 +4,6 @@ import 'file:///C:/Users/PC/AndroidStudioProjects/bukuque/lib/screens/formurid/l
 import 'package:flutter/material.dart';
 
 class UserSelect extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,30 +46,26 @@ class UserSelect extends StatelessWidget {
               ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.white54),
+                        MaterialStateProperty.all<Color>(Colors.white54),
                     minimumSize:
-                    MaterialStateProperty.all<Size>(Size(300, 50))),
+                        MaterialStateProperty.all<Size>(Size(300, 50))),
                 child: Text("Guru"),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => LoginForGuru()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginForGuru()));
                 },
               ),
               SizedBox(height: 30),
               ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.white54),
+                        MaterialStateProperty.all<Color>(Colors.white54),
                     minimumSize:
-                    MaterialStateProperty.all<Size>(Size(300, 50))),
+                        MaterialStateProperty.all<Size>(Size(300, 50))),
                 child: Text("Murid"),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => LoginForMurid()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginForMurid()));
                 },
               ),
             ],

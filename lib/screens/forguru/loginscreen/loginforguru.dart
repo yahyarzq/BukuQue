@@ -1,7 +1,13 @@
 
 import 'package:bukuque/component/constants.dart';
+import 'package:bukuque/query/activityclass.dart';
+import 'package:bukuque/query/activityfuture.dart';
+import 'package:bukuque/query/db_query.dart';
+import 'package:bukuque/query/sharedpreferencesactivity.dart';
+import 'package:bukuque/screens/forguru/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:bukuque/component/globals.dart' as globals;
 
 class LoginForGuru extends StatefulWidget {
   @override
@@ -16,15 +22,17 @@ class _LoginForGuru extends State<LoginForGuru> {
   String _password;
   String errorTextUser;
   String errorTextPass;
+  Future<TeacherLoginParserActivity> _teacherloginActivity;
 
   @override
   void initState() {
     super.initState();
     _passwordVisible = false;
+
   }
 
 
-  void _showAlertDialog(String message) async {
+  _showAlertDialog(String message) async {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -254,7 +262,25 @@ class _LoginForGuru extends State<LoginForGuru> {
                       minimumSize:
                       MaterialStateProperty.all<Size>(Size(100, 50))),
                   child: Text("Login"),
-                  onPressed: () {
+                  onPressed: () async {
+                    textFieldUserController.addListener(() {
+                      this._username =
+                          textFieldUserController.text;
+                    });
+                    textFieldPassController.addListener(() {
+                      this._password =
+                          textFieldPassController.text;
+                    });
+                    var fjpof  = await teacherLoginFutureActivity(_username,_password);
+                    await saveGuruSharedPreferences(_username,_password);
+                    if(fjpof.status){
+                      globals.teacher_id = fjpof.teacherId[0].id;
+                      globals.teacher_name = fjpof.teacherId[0].name;
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => HomeGuru()));
+                    }else{
+                      _showAlertDialog('Cek Username Dan Password Anda');
+                    }
                     setState(()  {
 
                     });
