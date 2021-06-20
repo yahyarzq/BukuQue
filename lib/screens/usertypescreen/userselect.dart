@@ -1,6 +1,6 @@
 import 'package:bukuque/component/constants.dart';
-import 'file:///C:/Users/PC/AndroidStudioProjects/bukuque/lib/screens/forguru/loginscreen/loginforguru.dart';
-import 'file:///C:/Users/PC/AndroidStudioProjects/bukuque/lib/screens/formurid/loginscreen/loginformurid.dart';
+import 'package:bukuque/screens/forguru/loginscreen/loginforguru.dart';
+import 'package:bukuque/screens/formurid/loginscreen/loginformurid.dart';
 import 'package:flutter/material.dart';
 
 class UserSelect extends StatelessWidget {

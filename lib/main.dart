@@ -1,5 +1,4 @@
 import 'package:bukuque/component/constants.dart';
-import 'file:///C:/Users/PC/AndroidStudioProjects/bukuque/lib/screens/forguru/home/dashboard/dashboardguru.dart';
 import 'package:bukuque/screens/forguru/home/home.dart';
 import 'package:bukuque/screens/usertypescreen/userselect.dart';
 import 'package:flutter/material.dart';
