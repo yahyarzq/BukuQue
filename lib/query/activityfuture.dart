@@ -1,49 +1,129 @@
-
 import 'dart:convert';
 import 'package:bukuque/query/activityclass.dart';
+import 'package:bukuque/query/studentsDataParserActivity.dart';
+import 'package:bukuque/query/studentsLoginParserActivity.dart';
+import 'package:bukuque/query/teacherClassStudentListParserActivity.dart';
 import 'package:http/http.dart' as http;
+import 'package:bukuque/component/globals.dart' as globals;
+
 //
 //  teacherLoginFutureActivity
 //
-Future<TeacherLoginParserActivity> teacherLoginFutureActivity(String username, String password) async {
-  http.Response response = await http.post(Uri.parse('http://10.0.2.2:8000/api/teacher/login'),
-  body: {
-    "username": username,
-    "password": password
-  });
+Future<TeacherLoginParserActivity> teacherLoginFutureActivity(
+    String username, String password) async {
+  http.Response response = await http.post(
+      Uri.parse('http://10.0.2.2:8000/api/teacher/login'),
+      body: {"username": username, "password": password});
 
   if (response.statusCode == 200) {
     //print("testing http connection");
     //print(json.decode(response.body));
     return TeacherLoginParserActivity.fromJson(jsonDecode(response.body));
-
   } else {
     //print("testing http connection");
     //print(json.decode(response.body));
     throw Exception('Failed To Load Data');
   }
-
 }
 
 //
 //  TeacherDataFutureActivity
 //
-Future<TeacherDataParserActivity> teacherDataFutureActivity(int teacherId) async {
-  http.Response response = await http.post(Uri.parse('http://10.0.2.2:8000/api/teacher/teacherData'),
-      body: {
-        "teacher_id": teacherId
-      });
-  print("testing http connection outside cehcker 200 ok");
-  print(json.decode(response.body));
+Future<TeacherDataParserActivity> teacherDataFutureActivity(String id) async {
+  http.Response response = await http.post(
+      Uri.parse('http://10.0.2.2:8000/api/teacher/teacherData'),
+      body: {"teacher_id": id});
   if (response.statusCode == 200) {
     print("testing http connection 2");
     print(json.decode(response.body));
     return TeacherDataParserActivity.fromJson(jsonDecode(response.body));
-
   } else {
     print("testing http connection2");
     print(json.decode(response.body));
     throw Exception('Failed To Load Data');
   }
+}
 
+//
+//  TeacherClassListParserActivity
+//
+Future<TeacherClassListParserActivity> teacherClassListFutureActivity(
+    String id) async {
+  http.Response response = await http.post(
+      Uri.parse('http://10.0.2.2:8000/api/teacher/teacherClassList'),
+      body: {"teacher_id": id});
+  if (response.statusCode == 200) {
+    print("testing http connection 3");
+    print(json.decode(response.body));
+    return TeacherClassListParserActivity.fromJson(jsonDecode(response.body));
+  } else {
+    print("testing http connection 3");
+    print(json.decode(response.body));
+    throw Exception('Failed To Load Data');
+  }
+}
+
+//
+//  TeacherClassListParserActivity
+//
+Future<TeacherClassStudentListParserActivity>
+    teacherClassStudentListFutureActivity(String tid, String cid) async {
+  http.Response response = await http.post(
+      Uri.parse('http://10.0.2.2:8000/api/teacher/teacherClassStudentList'),
+      body: {"teacher_id": tid, "class_id": cid});
+  if (response.statusCode == 200) {
+    print("testing http connection 3 4");
+    print(json.decode(response.body));
+    return TeacherClassStudentListParserActivity.fromJson(
+        jsonDecode(response.body));
+  } else {
+    print("testing http connection 3");
+    print(json.decode(response.body));
+    throw Exception('Failed To Load Data');
+  }
+}
+
+
+//
+//  Students
+//
+
+
+//
+//  StudentsLoginParserActivity
+//
+Future<StudentsLoginParserActivity> studentsLoginFutureActivity(
+    String username, String password) async {
+  http.Response response = await http.post(
+      Uri.parse('http://10.0.2.2:8000/api/students/login'),
+      body: {"username": username, "password": password});
+
+  if (response.statusCode == 200) {
+    print("testing http connection student 1");
+    print(json.decode(response.body));
+    return StudentsLoginParserActivity.fromJson(jsonDecode(response.body));
+  } else {
+    print("testing http connection student 1");
+    print(json.decode(response.body));
+    throw Exception('Failed To Load Data');
+  }
+}
+
+
+//
+//  StudentsDataFutureActivity
+//
+Future<StudentsDataParserActivity> studentsDataFutureActivity(String id,String cid) async {
+  http.Response response = await http.post(
+      Uri.parse('http://10.0.2.2:8000/api/students/studentsData'),
+      body: {"students_id": id, "class_id": cid});
+  if (response.statusCode == 200) {
+    print("testing http connection 2");
+    print(json.decode(response.body));
+    return StudentsDataParserActivity.fromJson(jsonDecode(response.body));
+  } else {
+    print("testing http connection2");
+    print(json.decode(response.body));
+    throw Exception('Failed To Load Data');
+  }
 }

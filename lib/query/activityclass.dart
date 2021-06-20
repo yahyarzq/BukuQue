@@ -85,3 +85,42 @@ class TeacherData2 {
   );
 
 }
+
+
+//
+// TeacherClassListParserActivity
+//
+
+
+class TeacherClassListParserActivity {
+  TeacherClassListParserActivity({
+    this.data,
+    this.message,
+  });
+
+  List<Datum> data;
+  String message;
+
+  factory TeacherClassListParserActivity.fromJson(Map<String, dynamic> json) => TeacherClassListParserActivity(
+    data: json["data"] == null ? null : List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+    message: json["message"] == null ? null : json["message"],
+  );
+
+}
+
+class Datum {
+  Datum({
+    this.id,
+    this.className,
+  });
+
+  int id;
+  String className;
+
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+    id: json["id"] == null ? null : json["id"],
+    className: json["class_name"] == null ? null : json["class_name"],
+  );
+
+
+}

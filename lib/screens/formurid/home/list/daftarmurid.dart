@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'daftarmuridtask.dart';
 
-class DaftarSubmittedtask extends StatelessWidget {
-  const DaftarSubmittedtask({
+class DaftarMurid extends StatelessWidget {
+  const DaftarMurid({
     Key key,
   }) : super(key: key);
 
@@ -56,16 +56,16 @@ class DaftarSubmittedtask extends StatelessWidget {
                 child: ListView.separated(
                     shrinkWrap: true,
                     itemBuilder: (context, index) => ListWidgetwithDetail(
-                      nama: '21 Mei 2021',
-                      nomer: '67567567',
-                      onTap: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => DaftarMuridTask()));
-                      },
-                    ),
+                          nama: '21 Mei 2021',
+                          nomer: '67567567',
+                          onTap: () {
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => DaftarMuridTask()));
+                          },
+                        ),
                     separatorBuilder: (context, index) => Divider(
-                      height: 35,
-                    ),
+                          height: 35,
+                        ),
                     itemCount: 10)),
           ],
         ),
@@ -81,9 +81,9 @@ class ListWidgetwithDetail extends StatelessWidget {
 
   ListWidgetwithDetail(
       {Key key,
-        @required this.nama,
-        @required this.nomer,
-        @required this.onTap})
+      @required this.nama,
+      @required this.nomer,
+      @required this.onTap})
       : super(key: key);
 
   @override
@@ -91,7 +91,7 @@ class ListWidgetwithDetail extends StatelessWidget {
     return GestureDetector(
       child: Center(
         child: Container(
-          height: 120,
+          height: 60,
           width: 350,
           decoration: BoxDecoration(
               color: Colors.grey, borderRadius: BorderRadius.circular(5.0)),

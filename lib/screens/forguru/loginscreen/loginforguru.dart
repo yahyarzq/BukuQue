@@ -276,7 +276,7 @@ class _LoginForGuru extends State<LoginForGuru> {
                     if(fjpof.status){
                       globals.teacher_id = fjpof.teacherId[0].id;
                       globals.teacher_name = fjpof.teacherId[0].name;
-                      Navigator.of(context).push(
+                      Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (context) => HomeGuru()));
                     }else{
                       _showAlertDialog('Cek Username Dan Password Anda');

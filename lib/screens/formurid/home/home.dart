@@ -2,24 +2,26 @@
 import 'package:bukuque/component/constants.dart';
 import 'package:bukuque/query/db_query.dart';
 import 'package:bukuque/screens/component/DashboardCard.dart';
+import 'package:bukuque/screens/formurid/home/about/aboutmurid.dart';
+import 'package:bukuque/screens/formurid/home/dashboard/dashboardmurid.dart';
 
 import 'package:flutter/material.dart';
 
-import 'about/aboutguru.dart';
-import 'dashboard/dashboardguru.dart';
-import 'list/daftarkelas.dart';
+import 'list/daftarmuridtask.dart';
+import 'list/daftarmuridviewtask.dart';
 
-class HomeGuru extends StatefulWidget{
+
+class HomeMurid extends StatefulWidget{
   @override
-  State<StatefulWidget> createState() => _HomeGuru();
+  State<StatefulWidget> createState() => _HomeMurid();
 }
 
-class _HomeGuru extends State<HomeGuru>{
+class _HomeMurid extends State<HomeMurid>{
   int _currentIndex = 0;
   final List<Widget> _children = [
-    DashboardGuru(),
-    DaftarKelas(),
-    AboutGuru(nama: 'ANDI', nomer: "7343478", onPressed: (){},)
+    DashboardMurid(),
+    DaftarMuridViewTask(),
+   AboutMurid()
   ];
 
   @override
