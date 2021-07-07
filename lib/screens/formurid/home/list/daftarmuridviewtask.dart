@@ -484,12 +484,6 @@ class _DaftarMuridTaskState extends State<DaftarMuridViewTask> {
                                 ),
                               ),
                             ),
-                            TextField(
-                              onChanged: (text){
-                                book_content = text;
-                              },
-                            ),
-                            SizedBox(height: 20,),
                             Container(
                               child: Padding(
                                 padding: const EdgeInsets.only(bottom: 20.0),
@@ -511,7 +505,7 @@ class _DaftarMuridTaskState extends State<DaftarMuridViewTask> {
                                           _showAlertDialog("Tugas Berhasil Dikirim");
                                         });
                                       },
-                                      child: Text("Beri Tanggapan"),
+                                      child: Text("Kirim"),
                                     ),
                                   ],
                                 ),

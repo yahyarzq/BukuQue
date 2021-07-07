@@ -11,11 +11,11 @@ class DaftarMuridTask extends StatefulWidget {
 }
 
 class _DaftarMuridTaskState extends State<DaftarMuridTask> {
-  bool _subuh = false;
+  bool _subuh = true;
   bool _dzuhur = false;
-  bool _ashar = false;
+  bool _ashar = true;
   bool _maghrib = false;
-  bool _isya = false;
+  bool _isya = true;
   String _surat;
 
   bool _mengaji = false;

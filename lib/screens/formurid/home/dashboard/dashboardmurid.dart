@@ -44,13 +44,7 @@ class _DashboardMuridState extends State<DashboardMurid> {
                     DashboardCard(
                         totalnumber: "-", title: "Data Terkirim", onTap: () {}),
                     SizedBox(height: 20),
-                    DashboardCard(
-                        totalnumber: "-",
-                        title: "Data Butuh Reviews",
-                        onTap: () {}),
-                    SizedBox(height: 20),
-                    DashboardCard(
-                        totalnumber: "-", title: "Partisiapn", onTap: () {})
+                    
                   ],
                 ),
               );
@@ -65,15 +59,7 @@ class _DashboardMuridState extends State<DashboardMurid> {
                         title: "Data Terkirim",
                         onTap: () {}),
                     SizedBox(height: 20),
-                    DashboardCard(
-                        totalnumber: data
-                            .data.studentsData2[0].totalClassMembers
-                            .toString(),
-                        title: "Teman Kelas",
-                        onTap: () {}),
-                    SizedBox(height: 20),
-                    DashboardCard(
-                        totalnumber: "20", title: "Report", onTap: () {})
+                    
                   ],
                 ),
               );
